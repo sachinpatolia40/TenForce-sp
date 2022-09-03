@@ -15,5 +15,9 @@
         public const string NoPlanetsFound = "No planets found.";
         public const string FileCreated = "The file is created in: ";
         public const string FolderCreated = "The folder is created in: ";
+        #region Display Messages
+        public const string LoadingData = "Loading data...";
+        public const string WritingData = "Writing data...";
+        #endregion
     }
 }

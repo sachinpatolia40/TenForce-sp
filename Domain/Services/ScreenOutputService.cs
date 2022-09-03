@@ -22,12 +22,20 @@ namespace Test_Taste_Console_Application.Domain.Services
 
         public void OutputAllPlanetsAndTheirMoonsToConsole()
         {
+            //print loading message
+            Console.Write(OutputString.LoadingData);
+
             //The service gets all the planets from the API.
             var planets = _planetService.GetAllPlanets().ToArray();
-
+            //clear the loading message 
+            ConsoleWriter.ClearCurrentLine();
+            //print  writing message
+            Console.Write(OutputString.WritingData);
             //If the planets aren't found, then the function stops and tells that to the user via the console.
             if (!planets.Any())
             {
+                //clear the message 
+                ConsoleWriter.ClearCurrentLine();
                 Console.WriteLine(OutputString.NoPlanetsFound);
                 return;
             }
@@ -47,6 +55,8 @@ namespace Test_Taste_Console_Application.Domain.Services
             {
                 OutputString.MoonNumber, OutputString.MoonId
             };
+            //clear the message 
+            ConsoleWriter.ClearCurrentLine();
 
             //The for loop creates the correct output.
             for (int i = 0, j = 1; i < planets.Length; i++, j++)
@@ -101,11 +111,18 @@ namespace Test_Taste_Console_Application.Domain.Services
 
         public void OutputAllMoonsAndTheirMassToConsole()
         {
+            //print loading message
+            Console.Write(OutputString.LoadingData);
             //The function works the same way as the PrintAllPlanetsAndTheirMoonsToConsole function. You can find more comments there.
             var moons = _moonService.GetAllMoons().ToArray();
-            
+            //clear the line
+            ConsoleWriter.ClearCurrentLine();
+            //print writing message
+            Console.Write(OutputString.WritingData);
             if (!moons.Any())
             {
+                //clear the current line
+                ConsoleWriter.ClearCurrentLine();
                 Console.WriteLine(OutputString.NoMoonsFound);
                 return;
             }
@@ -115,7 +132,8 @@ namespace Test_Taste_Console_Application.Domain.Services
             {
                 OutputString.MoonNumber, OutputString.MoonId, OutputString.MoonMassExponent, OutputString.MoonMassValue
             };
-
+            //clear the line 
+            ConsoleWriter.ClearCurrentLine();
             ConsoleWriter.CreateHeader(columnLabelsForMoons, columnSizesForMoons);
 
             for (int i = 0, j = 1; i < moons.Length; i++, j++)
@@ -145,10 +163,18 @@ namespace Test_Taste_Console_Application.Domain.Services
 
         public void OutputAllPlanetsAndTheirAverageMoonGravityToConsole()
         {
+            //print loading message
+            Console.Write(OutputString.LoadingData);
             //The function works the same way as the Prin   tAllPlanetsAndTheirMoonsToConsole function. You can find more comments there.
             var planets = _planetService.GetAllPlanets().ToArray();
+        //clear the line
+            ConsoleWriter.ClearCurrentLine();
+            //print writing message
+            Console.Write(OutputString.WritingData);
             if (!planets.Any())
             {
+                //clear the line
+                ConsoleWriter.ClearCurrentLine();
                 Console.WriteLine(OutputString.NoMoonsFound);
                 return;
             }
@@ -158,8 +184,8 @@ namespace Test_Taste_Console_Application.Domain.Services
             {
                 OutputString.PlanetId, OutputString.PlanetMoonAverageGravity
             };
-
-
+            //clear the line
+            ConsoleWriter.ClearCurrentLine();
             ConsoleWriter.CreateHeader(columnLabels, columnSizes);
 
             foreach(Planet planet in planets)
